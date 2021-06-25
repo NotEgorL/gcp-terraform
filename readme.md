@@ -3,15 +3,26 @@ Terraform code for deploying cloud run app + dns + sql + redis to us-east1
 To launch the app:
 
   terraform init
+  
+  
   terraform plan                   (you may need to activate the apis that will be used- terraform will output links to the gcp api pages) 
+  
+  
   terraform apply --auto-approve
 
 While the infrastructure is being created- you will need to build the docker image(make sure to edit ormconfig.json with the database specs):
 
+
+
   sudo docker build --tag gcr.io/gcp-lab-cloud-castles-com/graph . && sudo docker push gcr.io/gcp-lab-cloud-castles-com/graph
 
+
+
 If deletion of the resources is needed:
-  terraform destroy
+
+terraform destroy
+
+
 
 How can we secure the system from intrusion and attack, internal and external?
 We can limit internal issues with credential rotation and applying strick access policies for gcloud users.
